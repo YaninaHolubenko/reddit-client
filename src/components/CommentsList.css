@@ -1,0 +1,59 @@
+/* CommentsList.css */
+.comment-media {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.comment img, .comment video, .comment iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.comment a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.comments-section {
+  margin-top: 20px;
+}
+
+.toggle-comments {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4500;
+  color: white;
+  cursor: pointer;
+}
+
+.toggle-comments:hover {
+  background-color: #cc3700;
+}
+
+.comment {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-top: 20px; /* Добавим отступ сверху */
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+}
+
+.comment-author img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment p {
+  margin: 8px 0;
+}

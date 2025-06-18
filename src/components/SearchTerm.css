@@ -1,0 +1,38 @@
+/* SearchTerm.css */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 40%;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #FFDB58;
+  border-radius: 5px 0 0 5px;
+  transition: border-color 0.3s; /* Плавный переход для цвета границы */
+}
+
+.search-container input:focus {
+  border-color: #FF4500; /* Цвет границы при фокусе */
+}
+
+.search-container button {
+  padding: 10px;
+  font-size: 1em;
+  background-color: #FF4500;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Плавный переход для цвета фона и масштаба */
+  margin-left: 10px;
+}
+
+.search-container button:hover {
+  background-color: #FF6347;
+  transform: scale(1.05); /* Небольшое увеличение при наведении */
+}

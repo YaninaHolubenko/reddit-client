@@ -1,0 +1,44 @@
+/* Header.css */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffeb3b;
+  padding: 5px 20px;
+  border-radius: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  animation: slideIn 1s ease-out;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  animation: vibrate 0.3s linear infinite;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+

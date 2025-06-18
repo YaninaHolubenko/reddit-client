@@ -1,0 +1,77 @@
+.post-detail {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.post-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.post-author {
+  font-size: 14px;
+  color: #555;
+}
+
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post-stats .fa-comment, .post-stats .fa-star {
+  color: #ff4500;
+  margin-right: 5px;
+}
+
+.media-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.post-media {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px; /* Ограничение по высоте для детализированной страницы */
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+iframe.post-media {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .post-detail {
+    padding: 10px;
+  }
+
+  .post-title {
+    font-size: 20px;
+  }
+
+  .post-author {
+    font-size: 12px;
+  }
+
+  .post-stats {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  iframe.post-media {
+    max-width: 100%;
+  }
+}

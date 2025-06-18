@@ -1,13 +1,112 @@
+/*index.css */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffeb3b;
+  padding: 10px 20px;
+  border-radius: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  animation: slideIn 1s ease-out;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  animation: vibrate 0.3s linear infinite;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 40%;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #FFDB58;
+  border-radius: 5px 0 0 5px;
+  transition: border-color 0.3s; /* Плавный переход для цвета границы */
+}
+
+.search-container input:focus {
+  border-color: #FF4500; /* Цвет границы при фокусе */
+}
+
+.search-container button {
+  padding: 10px;
+  font-size: 1em;
+  background-color: #FF4500;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Плавный переход для цвета фона и масштаба */
+  margin-left: 10px;
+}
+
+.search-container button:hover {
+  background-color: #FF6347;
+  transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between; /* Обеспечиваем размещение элементов по сторонам */
+  width: 100%;
+  max-width: 1200px;
+}
+
+.posts-container {
+  flex: 1;
+  margin-left: 20px; /* Добавляем отступ слева */
+}
+
+.categories-container {
+  width: 250px; /* Фиксированная ширина для боковой панели */
+  flex-shrink: 0;
 }
