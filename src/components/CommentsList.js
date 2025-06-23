@@ -22,6 +22,14 @@ const CommentsList = ({ postId }) => {
     return { __html: sanitizedContent };
   };
 
+  const convertGiphyEmbedToUrl = (input) => {
+    if (typeof input === 'string' && input.startsWith('giphy|')) {
+      const id = input.split('|')[1];
+      return `https://media.giphy.com/media/${id}/giphy.gif`;
+    }
+    return input;
+  };
+
   const handleToggleComments = () => {
     setShowComments(!showComments);
   };
@@ -32,19 +40,21 @@ const CommentsList = ({ postId }) => {
     const lines = content.split('\n');
 
     lines.forEach((line, index) => {
-      const mediaRegex = /(https?:\/\/[^\s]+\.(jpeg|jpg|gif|png|gifv|mp4|webm))/i;
+      const mediaRegex = /(https?:\/\/[^\s]+\.(jpeg|jpg|gif|png|gifv|mp4|webm)|giphy\|[^\s]+)/i;
       const match = line.match(mediaRegex);
 
       if (match) {
-        let url = match[0];
+        let url = convertGiphyEmbedToUrl(match[0]);
+
         if (typeof url === 'string') {
           if (url.endsWith('.gifv')) {
             url = url.replace('.gifv', '.mp4');
           }
+
           elements.push(
             <React.Fragment key={index}>
               {url.endsWith('.mp4') || url.endsWith('.webm') ? (
-                <video src={url} controls className="comment-media"></video>
+                <video src={url} controls className="comment-media" />
               ) : (
                 <img src={url} alt="Comment media" className="comment-media" />
               )}

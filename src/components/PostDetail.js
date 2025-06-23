@@ -1,3 +1,5 @@
+// src/components/PostDetail.js
+
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -31,6 +33,20 @@ const PostDetail = () => {
     return <div>No post found.</div>;
   }
 
+  const decodeHtml = (html) => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  };
+
+  const cleanHtmlContent = (htmlContent) => {
+    const decodedHtml = decodeHtml(htmlContent);
+    const sanitizedHtml = DOMPurify.sanitize(decodedHtml, {
+      USE_PROFILES: { html: true },
+    });
+    return parse(sanitizedHtml);
+  };
+
   const renderMediaContent = () => {
     if (postDetail.media && postDetail.media.reddit_video) {
       const videoUrl = postDetail.media.reddit_video.fallback_url;
@@ -42,7 +58,9 @@ const PostDetail = () => {
           </video>
         </div>
       );
-    } else if (postDetail.preview && postDetail.preview.reddit_video_preview) {
+    }
+
+    if (postDetail.preview && postDetail.preview.reddit_video_preview) {
       const videoUrl = postDetail.preview.reddit_video_preview.fallback_url;
       return (
         <div className="media-container">
@@ -52,41 +70,49 @@ const PostDetail = () => {
           </video>
         </div>
       );
-    } else if (postDetail.secure_media_embed && postDetail.secure_media_embed.content) {
-      const sanitizedHtml = DOMPurify.sanitize(postDetail.secure_media_embed.content);
-      if (!sanitizedHtml.includes('iframe')) {
-        return <div className="post-detail-content post-media">{parse(sanitizedHtml)}</div>;
-      } else {
-        return <div className="post-detail-content"><p>Embedded content cannot be displayed.</p></div>;
-      }
-    } else if (postDetail.media_embed && postDetail.media_embed.content) {
-      const sanitizedHtml = DOMPurify.sanitize(postDetail.media_embed.content);
-      if (!sanitizedHtml.includes('iframe')) {
-        return <div className="post-detail-content post-media">{parse(sanitizedHtml)}</div>;
-      } else {
-        return <div className="post-detail-content"><p>Embedded content cannot be displayed.</p></div>;
-      }
-    } else if (postDetail.preview && postDetail.preview.images && postDetail.preview.images.length > 0) {
-      const imageUrl = postDetail.preview.images[0].source.url.replace(/&amp;/g, '&');
-      return <img src={imageUrl} alt={postDetail.title} className="post-image post-detail-content post-media" />;
-    } else if (postDetail.thumbnail && postDetail.thumbnail !== 'self' && postDetail.thumbnail !== 'default' && postDetail.thumbnail !== 'nsfw') {
-      const thumbnailUrl = postDetail.thumbnail.replace(/&amp;/g, '&');
-      return <img src={thumbnailUrl} alt={postDetail.title} className="post-image post-detail-content post-media" />;
     }
+
+    if (postDetail.preview && postDetail.preview.images && postDetail.preview.images.length > 0) {
+      const imageUrl = postDetail.preview.images[0].source.url.replace(/&amp;/g, '&');
+      return (
+        <img
+          src={imageUrl}
+          alt={postDetail.title}
+          className="post-image post-detail-content post-media"
+        />
+      );
+    }
+
+    if (
+      postDetail.thumbnail &&
+      postDetail.thumbnail !== 'self' &&
+      postDetail.thumbnail !== 'default' &&
+      postDetail.thumbnail !== 'nsfw' &&
+      postDetail.thumbnail !== 'spoiler'
+    ) {
+      const thumbnailUrl = postDetail.thumbnail.replace(/&amp;/g, '&');
+      return (
+        <img
+          src={thumbnailUrl}
+          alt="Fallback preview"
+          className="post-image post-detail-content post-media"
+        />
+      );
+    }
+
     return null;
   };
 
-  const decodeHtml = (html) => {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-  };
+  const renderEmbeddedContent = () => {
+    const html = postDetail.secure_media_embed?.content || postDetail.media_embed?.content;
+    if (!html) return null;
 
-  const cleanHtmlContent = (htmlContent) => {
-    const cleanedHtml = htmlContent.replace(/<!--[\s\S]*?-->/g, ''); // Remove HTML comments
-    const decodedHtml = decodeHtml(cleanedHtml);
-    const sanitizedHtml = DOMPurify.sanitize(decodedHtml, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
-    return parse(sanitizedHtml);
+    const sanitizedHtml = DOMPurify.sanitize(html, {
+      ADD_TAGS: ['iframe'],
+      ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'],
+    });
+
+    return <div className="post-detail-content post-media">{parse(sanitizedHtml)}</div>;
   };
 
   const renderContentMessage = () => {
@@ -101,20 +127,30 @@ const PostDetail = () => {
 
   return (
     <div className="post-detail">
-      <h2 className="post-title"><Twemoji text={decodeHtml(postDetail.title)} /></h2>
-      <p>Posted by {postDetail.author} on {new Date(postDetail.created_utc * 1000).toLocaleString()}</p>
+      <h2 className="post-title">
+        <Twemoji text={decodeHtml(postDetail.title)} />
+      </h2>
+      <p>
+        Posted by {postDetail.author} on{' '}
+        {new Date(postDetail.created_utc * 1000).toLocaleString()}
+      </p>
+
       <div className="post-detail-content">
         {postDetail.selftext_html ? cleanHtmlContent(postDetail.selftext_html) : null}
       </div>
-      {renderMediaContent() || renderContentMessage()}
+
+      {renderMediaContent() || renderEmbeddedContent() || renderContentMessage()}
+
       <div className="post-stats">
         <span className="comments">
-          <FontAwesomeIcon icon={faComment} className="fa-comment" /> {postDetail.num_comments} comments
+          <FontAwesomeIcon icon={faComment} className="fa-comment" />{' '}
+          {postDetail.num_comments} comments
         </span>
         <span className="score">
           <FontAwesomeIcon icon={faStar} className="fa-star" /> {postDetail.score}
         </span>
       </div>
+
       <CommentsList postId={postId} />
     </div>
   );
