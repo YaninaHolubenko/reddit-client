@@ -105,6 +105,11 @@ body {
   flex: 1;
   margin-left: 20px; /* Добавляем отступ слева */
 }
+@media (max-width: 600px){
+  .posts-container{
+     margin-left: 0px;
+  }
+}
 
 .categories-container {
   width: 250px; /* Фиксированная ширина для боковой панели */

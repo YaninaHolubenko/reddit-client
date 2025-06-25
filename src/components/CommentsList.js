@@ -56,7 +56,13 @@ const CommentsList = ({ postId }) => {
               {url.endsWith('.mp4') || url.endsWith('.webm') ? (
                 <video src={url} controls className="comment-media" />
               ) : (
-                <img src={url} alt="Comment media" className="comment-media" />
+                <img
+                  src={url}
+                  alt="Comment media"
+                  className="comment-media"
+                  onError={(e) => (e.target.style.display = 'none')}
+                />
+
               )}
             </React.Fragment>
           );

@@ -1,5 +1,6 @@
-//commentsSlice.js
+// commentsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 
 export const fetchCommentsByPostId = createAsyncThunk(
   'comments/fetchCommentsByPostId',
@@ -21,9 +22,12 @@ const commentsSlice = createSlice({
   },
 });
 
-export const selectCommentsByPostId = (state, postId) =>
-  state.comments.filter((comment) => comment.parent_id === `t3_${postId}`);
+// Селектор мемоизированный
+const selectComments = (state) => state.comments;
+
+export const selectCommentsByPostId = createSelector(
+  [selectComments, (_, postId) => postId],
+  (comments, postId) => comments.filter((comment) => comment.parent_id === `t3_${postId}`)
+);
 
 export default commentsSlice.reducer;
-
-

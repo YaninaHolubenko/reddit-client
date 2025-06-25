@@ -1,65 +1,61 @@
-/* CategoriesList.css */
-
 .categories-list {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    max-width: 100%;
+  position:relative;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  max-width: 100%;
+}
+
+.categories-list h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #ff4500;
+  text-align: center;
+}
+
+.categories-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.categories-list ul li {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.categories-list ul li:hover {
+  background-color: #ff4500;
+  color: #fff;
+  border-radius: 4px;
+  transform: scale(1.05);
+}
+
+.categories-list ul li.active {
+  background-color: #ff4500;
+  color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .categories-list {
+    width: 100%;
+    margin-bottom: 20px;
   }
-  
-  .categories-list h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #ff4500;
-    text-align: center;
-  }
-  
+
   .categories-list ul {
-    list-style: none;
-    padding: 0;
+    display: block;
   }
-  
+
   .categories-list ul li {
-    padding: 10px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2em;
-    text-align: center; /* Изменим выравнивание текста */
+    flex: none;
+    margin: 5px 0;
   }
-  
-  .categories-list ul li:hover {
-    background-color: #ff4500;
-    color: #fff;
-    border-radius: 4px;
-    transform: scale(1.05);
-  }
-  
-  .categories-list ul li.active {
-    background-color: #ff4500;
-    color: #fff;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Центрируем текст по горизонтали */
-  }
-  
-  @media (max-width: 768px) {
-    .categories-list {
-      width: 100%; /* Займет всю ширину на мобильных устройствах */
-      margin-bottom: 20px;
-    }
-  
-    .categories-list ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-  
-    .categories-list ul li {
-      flex: 1 1 45%;
-      margin: 5px;
-      text-align: center;
-    }
-  }
+}

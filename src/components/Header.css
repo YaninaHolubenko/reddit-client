@@ -42,3 +42,29 @@
   100% { transform: translateX(0); }
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: 5px 10px;
+  }
+
+  .logo {
+    width: 40px; /* чуть меньше лого для мобильной версии */
+  }
+
+  .search-container {
+    flex-grow: 1;
+    display: flex;
+    margin: 0 10px;
+    max-width: 550px;
+  }
+
+  .search-container input {
+    flex-grow: 1;
+    max-width: 150px;
+  }
+
+  .search-container button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+}

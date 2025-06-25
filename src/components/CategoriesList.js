@@ -6,7 +6,7 @@ import { setSelectedCategory } from '../features/selectedCategorySlice';
 import { useNavigate } from 'react-router-dom';
 import './CategoriesList.css';
 
-const CategoriesList = () => {
+const CategoriesList = ({ onCategorySelect }) => {
   const dispatch = useDispatch();
   const subreddits = useSelector(selectAllSubreddits);
   const selectedCategory = useSelector(state => state.selectedCategory);
@@ -18,7 +18,8 @@ const CategoriesList = () => {
 
   const handleCategoryClick = (subreddit) => {
     dispatch(setSelectedCategory(subreddit));
-    navigate('/'); // Перейти на главную страницу для отображения списка постов
+    if (onCategorySelect) onCategorySelect();
+    navigate('/');
   };
 
   const formatCategoryName = (name) => {
@@ -27,6 +28,11 @@ const CategoriesList = () => {
 
   return (
     <div className="categories-list">
+      {onCategorySelect && (
+        <button className="close-menu" onClick={onCategorySelect}>
+          ×
+        </button>
+      )}
       <h2>Subreddits</h2>
       <ul>
         <li
