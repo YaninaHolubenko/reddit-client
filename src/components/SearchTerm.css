@@ -13,11 +13,11 @@
   font-size: 1em;
   border: 2px solid #FFDB58;
   border-radius: 5px 0 0 5px;
-  transition: border-color 0.3s; /* Плавный переход для цвета границы */
+  transition: border-color 0.3s; 
 }
 
 .search-container input:focus {
-  border-color: #FF4500; /* Цвет границы при фокусе */
+  border-color: #FF4500; 
 }
 
 .search-container button {
@@ -34,5 +34,24 @@
 
 .search-container button:hover {
   background-color: #FF6347;
-  transform: scale(1.05); /* Небольшое увеличение при наведении */
+  transform: scale(1.05); 
+}
+
+/* Disable the clear (cross) button in Chrome, Edge, Safari */
+.search-container input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/* Disable the clear (cross) button in Firefox */
+.search-container input[type="search"]::-moz-search-clear {
+  display: none;
+}
+
+/* Disable the clear (cross) button in Internet Explorer / old Edge */
+.search-container input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
 }

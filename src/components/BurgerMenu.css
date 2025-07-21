@@ -1,6 +1,6 @@
 /* BurgerMenu.css */
 
-/* Скрыт по умолчанию */
+/* Hidden by default */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -11,13 +11,13 @@
   padding: 0;
 }
 
-/* Только для мобильных */
+/* Mobile only */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
     position: absolute;
-    top: 45px; /* выравниваем по вертикали с логотипом */
-    right: 20px; /* справа */
+    top: 45px; /* Align vertically with the logo */
+    right: 20px; /* On the right */
     z-index: 1100;
   }
 

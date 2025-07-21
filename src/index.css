@@ -70,11 +70,11 @@ body {
   font-size: 1em;
   border: 2px solid #FFDB58;
   border-radius: 5px 0 0 5px;
-  transition: border-color 0.3s; /* Плавный переход для цвета границы */
+  transition: border-color 0.3s; 
 }
 
 .search-container input:focus {
-  border-color: #FF4500; /* Цвет границы при фокусе */
+  border-color: #FF4500; 
 }
 
 .search-container button {
@@ -85,25 +85,25 @@ body {
   border: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Плавный переход для цвета фона и масштаба */
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; 
   margin-left: 10px;
 }
 
 .search-container button:hover {
   background-color: #FF6347;
-  transform: scale(1.05); /* Небольшое увеличение при наведении */
+  transform: scale(1.05); 
 }
 
 .main-content {
   display: flex;
-  justify-content: space-between; /* Обеспечиваем размещение элементов по сторонам */
+  justify-content: space-between; 
   width: 100%;
   max-width: 1200px;
 }
 
 .posts-container {
   flex: 1;
-  margin-left: 20px; /* Добавляем отступ слева */
+  margin-left: 20px; 
 }
 @media (max-width: 600px){
   .posts-container{
@@ -112,6 +112,24 @@ body {
 }
 
 .categories-container {
-  width: 250px; /* Фиксированная ширина для боковой панели */
+  width: 250px; 
   flex-shrink: 0;
+}
+
+/* For Chrome, Edge, Safari */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/* For Firefox */
+input[type="search"]::-ms-clear {
+  display: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
 }

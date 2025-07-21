@@ -1,3 +1,4 @@
+/* App.css */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -19,13 +20,13 @@ body {
   }
   
   .categories-list {
-    flex: 0 0 200px; /* Установим фиксированную ширину */
-    margin-right: 20px; /* Отступ между блоками */
+    flex: 0 0 200px; /* Set a fixed width */
+    margin-right: 20px; /* Spacing between blocks */
   }
   
   .posts-list {
     flex: 1;
-    max-width: calc(100% - 220px); /* Учитываем ширину списка категорий и отступ */
+    max-width: calc(100% - 220px); /* Adjusts the max width of the posts list so it doesn't overlap with the categories list. '220px' includes the categories sidebar width and the margin/padding between sections. */
   }
   
   .header {
@@ -85,11 +86,11 @@ body {
     font-size: 1em;
     border: 2px solid #FFDB58;
     border-radius: 5px 0 0 5px;
-    transition: border-color 0.3s; /* Плавный переход для цвета границы */
+    transition: border-color 0.3s; /* Smooth transition when the border colour changes (e.g. on focus) */
   }
   
   .search-container input:focus {
-    border-color: #FF4500; /* Цвет границы при фокусе */
+    border-color: #FF4500; /* Change the border colour to orange when the input is focused for better user feedback */
   }
   
   .search-container button {
@@ -100,11 +101,11 @@ body {
     border: none;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Плавный переход для цвета фона и масштаба */
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition effects on hover */
     margin-left: 10px;
   }
   
   .search-container button:hover {
     background-color: #FF6347;
-    transform: scale(1.05); /* Небольшое увеличение при наведении */
+    transform: scale(1.05); 
   }

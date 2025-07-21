@@ -6,8 +6,7 @@ import './SearchTerm.css';
 
 const SearchTerm = () => {
   const dispatch = useDispatch();
-  const searchTerm = useSelector(state => state.searchTerm); // Получаем текущее значение поискового термина из Redux состояния
-
+  const searchTerm = useSelector(state => state.searchTerm); // Get the current search term value from the Redux state
   const onSearchTermChanged = (e) => {
     dispatch(setSearchTerm(e.target.value));
   };
@@ -19,7 +18,7 @@ const SearchTerm = () => {
   return (
     <section className="search-container">
       <input
-        type="text"
+        type="search"
         value={searchTerm}
         onChange={onSearchTermChanged}
         placeholder="Search posts..."

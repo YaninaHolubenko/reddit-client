@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Reddit Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fast, clean, and fully tested Reddit browser built with React, Redux Toolkit, and React Router.  
+Created as a portfolio project to showcase real-world, maintainable code and professional testing practices.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+- Browse popular subreddits and Reddit posts
+- Search posts by keywords
+- Responsive UI: desktop and mobile support, including burger menu
+- View post details and comments with Markdown/HTML rendering
+- Category selection with active highlight
+- Full test coverage (Jest + React Testing Library)
+- Caching to avoid redundant API calls
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚡️ Live Demo
 
-### `npm test`
+[Demo Link Here (if deployed)]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🚀 Quick Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/YaninaHolubenko/reddit-client.git
+    cd reddit-client
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Run the app:**
+    ```bash
+    npm start
+    ```
+    Open [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+4. **Run tests:**
+    ```bash
+    npm test
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+src/
+  app/              # Main app setup, routing, root components
+    __tests__/      # Tests for App-level components
+    App.css
+    App.js
+    store.js
+  components/       # UI components (each with its own CSS)
+    __tests__/      # Tests for each UI component
+    BurgerMenu.css 
+    BurgerMenu.js
+    ...
+  features/         # Redux slices, thunks, selectors
+    __tests__/      # Tests for Redux logic (slices, thunks, selectors)
+    allPostsSlice.js
+    commentsSlice.js
+    ...
+  hooks/            # Custom hooks
+  index.css         # Global styles
+  index.js          # React entry point
+  setupTests.js     # Test setup file 
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Component CSS: Each component has its own .css file for easier maintenance and modularity.
 
-## Learn More
+- Tests: Tests are colocated in __tests__ folders next to code for clarity and coverage.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ Reddit API: CORS & Rate Limiting Notes
+- Reddit CORS Policy: Reddit's public API does not send CORS headers, so direct requests from the browser can be blocked in production.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Workaround: For local development, you may need to use a CORS proxy (e.g. https://cors-anywhere.herokuapp.com/) or run in a browser with CORS disabled.
+Note: All fetch calls in postsThunks.js can be switched to use a proxy by replacing the base URL.
 
-### Code Splitting
+- Caching: To minimise API requests and avoid hitting Reddit rate limits, all API calls are cached locally for 5 minutes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🧪 Testing
+- Coverage: All major features are tested with Jest + React Testing Library.
 
-### Analyzing the Bundle Size
+- Mocking: API calls and navigation are properly mocked for isolation and reliability.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 💡 Tech Stack
+React (functional, hooks-only)
 
-### Making a Progressive Web App
+Redux Toolkit (slices, async thunks, selectors)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+React Router v6
 
-### Advanced Configuration
+FontAwesome for icons
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+react-emoji-render for emoji support
 
-### Deployment
+Markdown & HTML parsing: marked, dompurify, html-react-parser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📌 License
+MIT

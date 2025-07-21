@@ -1,4 +1,4 @@
-
+/* PostDetail.css */
 
 .post-detail {
   padding: 20px;
@@ -40,7 +40,7 @@
 .post-media {
   max-width: 100%;
   height: auto;
-  max-height: 500px; /* Ограничение по высоте для детализированной страницы */
+  max-height: 500px; 
 }
 
 .post-image {
