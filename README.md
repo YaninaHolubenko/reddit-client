@@ -19,7 +19,7 @@ Created as a portfolio project to showcase real-world, maintainable code and pro
 
 ## ⚡️ Live Demo
 
-[Demo Link Here (if deployed)]
+Check out the deployed app: [Reddit Client on GitHub Pages] (https://yaninaholubenko.github.io/reddit-client/)
 
 ---
 
