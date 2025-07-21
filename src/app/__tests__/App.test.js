@@ -4,6 +4,7 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import App from '../App';
 import { Provider } from 'react-redux';
 import store from '../store';
+import { BrowserRouter } from 'react-router-dom'; 
 
 // Simulate window resizing with act() wrapper
 function resizeTo(width) {
@@ -24,7 +25,9 @@ describe('<App /> integration', () => {
     resizeTo(1024);
     render(
       <Provider store={store}>
+         <BrowserRouter>
         <App />
+        </BrowserRouter>
       </Provider>
     );
 
@@ -43,7 +46,9 @@ describe('<App /> integration', () => {
     resizeTo(500);
     render(
       <Provider store={store}>
+        <BrowserRouter>
         <App />
+        </BrowserRouter>
       </Provider>
     );
 
@@ -75,7 +80,9 @@ describe('<App /> integration', () => {
     window.history.pushState({}, '', '/some/random/path');
     render(
       <Provider store={store}>
+        <BrowserRouter>
         <App />
+        </BrowserRouter>
       </Provider>
     );
 

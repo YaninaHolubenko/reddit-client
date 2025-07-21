@@ -2,7 +2,7 @@
 // useState: lets this component remember a value and update it
 // useEffect: lets this component run some code after render, or when dependencies change
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from '../components/Header';
 import PostsList from '../components/PostsList';
 import PostDetail from '../components/PostDetail';
@@ -45,7 +45,7 @@ function App() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <Router>
+   
       <div className="App">
         <Header />
         {/*   If 'isMobile' is true, render the <BurgerMenu /> component.
@@ -78,7 +78,7 @@ function App() {
           </div>
         </div>
       </div>
-    </Router>
+  
   );
 }
 
