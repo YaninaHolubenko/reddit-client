@@ -2,6 +2,7 @@
   "name": "reddit-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://YaninaHolubenko.github.io/reddit-client",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
@@ -26,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,7 +54,6 @@
       "^features/(.*)$": "<rootDir>/src/features/$1",
       "^hooks/(.*)$": "<rootDir>/src/hooks/$1"
     }
-  
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
@@ -60,6 +62,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "babel-jest": "^30.0.2",
+    "gh-pages": "^6.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.0.2",
     "jest-environment-jsdom": "^30.0.0",
