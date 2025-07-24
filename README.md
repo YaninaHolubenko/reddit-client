@@ -91,6 +91,15 @@ Note: All fetch calls in postsThunks.js can be switched to use a proxy by replac
 
 - Mocking: API calls and navigation are properly mocked for isolation and reliability.
 
+
+## Wireframes
+
+### Desktop Version
+![Desktop Wireframe](docs/wireframes/Desktop.jpg)
+
+### Mobile Version
+![Mobile Wireframe](docs/wireframes/Mobile.jpg)
+
 ## 💡 Tech Stack
 React (functional, hooks-only)
 
